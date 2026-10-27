@@ -1,0 +1,14 @@
+{
+  "name": "Laravel 12 Supabase PHP 8.3",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "Laravel Application",
+      "onAutoForward": "notify"
+    }
+  }
+}
