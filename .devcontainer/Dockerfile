@@ -5,6 +5,7 @@ USER root
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        libpq-dev \
-    && docker-php-ext-install pdo_pgsql \
-    && php -r 'if (!extension_loaded("pdo_pgsql")) exit(1);' \
+       libicu-dev \
+    && docker-php-ext-install pdo_pgsql intl \
+    && php -r 'if (!extension_loaded("pdo_pgsql") || !extension_loaded("intl")) exit(1);' \
     && rm -rf /var/lib/apt/lists/*
